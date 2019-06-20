@@ -2,15 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './RegisterCard.css';
 
-const userSignup = `
-  mutation UserSignup( $email: String!, $password: String!, $name: String! ) {
-    signup( email: $email, password: $password, name: $name ) {
-    	id
-    	name
-    	email
-    }
-  }
-`;
 const RegisterCard = () => {
 	const [inputs, changeInputs] = useState({ name: '', email: '', password: '' });
 	const handleInput = ( event ) => {

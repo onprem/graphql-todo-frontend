@@ -69,3 +69,17 @@ export const ADD_TODO = gql`
 		}
 	}
 `;
+export const USR_SIGNUP = gql`
+  mutation UserSignup( $email: String!, $password: String!, $name: String! ) {
+    signup( email: $email, password: $password, name: $name ) {
+    	id
+    	name
+    	email
+    }
+  }
+`;
+export const USR_LOGIN = gql`
+  mutation UserLogin($email: String!, $password: String!) {
+    login(email: $email, password: $password)
+  }
+`;
