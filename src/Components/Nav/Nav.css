@@ -1,0 +1,55 @@
+.topNav {
+	position: fixed;
+	width: 100%;
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.3em;
+	font-weight: bold;
+	z-index: 10;
+	
+}
+.topNav a {
+	text-decoration: none;
+}
+.logo {
+	height: 40px;
+}
+.topNav > div {
+	margin: 0 75px;
+}
+.nav-left {
+	height: 80px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.nav-left a {
+	color: white;
+}
+.nav-right {
+	float: right;
+}
+
+.topNav > div > a {
+	margin: 0 30px;
+}
+
+@media only screen and (max-width: 1000px) {
+	.topNav {
+		background: rgba(0, 0, 0, 0.3);
+	}
+	.topNav > div {
+		margin: 0 0px;
+	}
+	.topNav a {
+		color: white;
+	}
+	.topNav > div > a {
+		margin: 0 5px;
+	}
+	.logo {
+		margin-left: 10px;
+	}
+}

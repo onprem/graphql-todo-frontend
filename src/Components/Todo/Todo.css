@@ -1,0 +1,27 @@
+.todoDiv {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100px;
+	align-items: center;
+	justify-content: space-between;
+}
+.todoDiv > p {
+	text-align: left;
+	font-weight: 500;
+	cursor: pointer;
+}
+.todoComplete {
+	text-decoration: line-through;
+}
+.todoDelete {
+	border: 0;
+	font-size: 1.3em;
+	font-weight: bold;
+	background: red;
+	border-radius: 50%;
+	color: white;
+}
+.todoDelete:hover {
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
