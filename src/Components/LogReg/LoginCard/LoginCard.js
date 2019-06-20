@@ -6,6 +6,7 @@ import './LoginCard.css';
 
 const LoginCard = () => {
 	const [inputs, changeInputs] = useState({ email: '', password: '' });
+	const [errorMsg, setErrorMsg] = useState('');
 	return (
 		<Mutation
 			mutation={USR_LOGIN}
@@ -36,11 +37,20 @@ const LoginCard = () => {
 						<Redirect to="/" />
 					);
 				}
+				if ( error ) {
+					if(error.graphQLErrors.length > 0 && error.graphQLErrors[0].extensions.code === "UNAUTHENTICATED")
+						setErrorMsg('Invalid email or password.');
+					else
+						setErrorMsg('Something went wrong.');
+				}
 				return (
 					<div className='loginCard'>
 						<h3>Welcome back!</h3>
 						<p>Login to access your dashboard</p>
 						<form className='loginForm' onSubmit={handleSubmit}>
+							{ errorMsg !== '' &&
+								<div className="errorMsg">{errorMsg}</div>
+							}
 							<input className='loginInput' type='text' name='email' placeholder='E-mail' onChange={handleInput} required />
 							<input className='loginInput' type='password' name='password' placeholder='Password' onChange={handleInput} required />
 							<input type='submit' name='login' value='LOG IN' disabled={loading} />

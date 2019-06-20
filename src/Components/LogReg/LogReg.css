@@ -38,6 +38,14 @@ section.loginSection {
 	justify-content: center;
 	align-items: center;
 }
+.errorMsg {
+	color: red;
+	border: 2px solid red;
+	padding: 3px 10px;
+	height: 2em;
+	line-height: 2em;
+	border-radius: 1em;
+}
 
 @media only screen and (max-width: 1000px) {
 	section.loginSection {

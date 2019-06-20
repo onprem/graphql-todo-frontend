@@ -37,7 +37,7 @@
 .registerInput:focus {
 	border: 2px solid blue;
 }
-.registerForm input:nth-child(4) {
+.registerForm input[type="submit"] {
 	/*background: #24d0ad;*/
 	width: 100%;
 	background: linear-gradient(to right, rgb(0, 30, 255), rgb(58, 156, 255)) repeat scroll 0% 0%;
@@ -48,4 +48,9 @@
 	border: 0;
 	box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
 	cursor: pointer;
+}
+.registerForm input[type="submit"]:disabled {
+	/*background: #24d0ad;*/
+	background: lightslategrey;
+	cursor: not-allowed;
 }

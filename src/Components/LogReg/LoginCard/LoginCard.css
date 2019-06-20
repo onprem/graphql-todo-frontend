@@ -37,7 +37,7 @@
 .loginInput:focus {
 	border: 2px solid blue;
 }
-.loginForm input:nth-child(3) {
+.loginForm input[type="submit"] {
 	/*background: #24d0ad;*/
 	width: 100%;
 	background: linear-gradient(to right, rgb(0, 30, 255), rgb(58, 156, 255)) repeat scroll 0% 0%;
