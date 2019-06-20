@@ -22,6 +22,8 @@ export const DEL_TODO = gql`
 			message
 			user {
 				id
+				name
+				email
 				todos {
 					id
 					title

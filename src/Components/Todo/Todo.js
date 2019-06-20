@@ -1,9 +1,9 @@
 import React from 'react';
 import { Mutation } from "react-apollo";
-import { TOG_TODO, GET_USER } from '../../gqlDefs';
+import { DEL_TODO, TOG_TODO, GET_USER } from '../../gqlDefs';
 import './Todo.css';
 
-const Todo = ( { id, title, isComplete, deleteTodo } ) => {
+const Todo = ( { id, title, isComplete } ) => {
 	return (
 		<Mutation
 			mutation={TOG_TODO}
@@ -18,10 +18,25 @@ const Todo = ( { id, title, isComplete, deleteTodo } ) => {
 			}}
 		>
 			{ toggleTodo => (
-				<div className='todoDiv'>
-					<p className={isComplete?`todoComplete`:`todoPending`} onClick={ () => toggleTodo({ variables: { todoId: id } }) } >{title}</p>
-					<button className='todoDelete' onClick={ () => deleteTodo(id) } >X</button>
-				</div>
+				<Mutation
+					mutation={DEL_TODO}
+					update={( cache, { data: { removeTodo } }) => {
+						//const { me } = cache.readQuery({ query: GET_USER });
+						cache.writeQuery({
+							query: GET_USER,
+							data: {
+								me: removeTodo.user
+							}
+						});
+					}}
+				>
+					{ removeTodo => (
+						<div className='todoDiv'>
+							<p className={isComplete?`todoComplete`:`todoPending`} onClick={ () => toggleTodo({ variables: { todoId: id } }) } >{title}</p>
+							<button className='todoDelete' onClick={ () => removeTodo({ variables: { todoId: id } }) } >X</button>
+						</div>
+					)}
+				</Mutation>
 			)}
 		</Mutation>
 	);
