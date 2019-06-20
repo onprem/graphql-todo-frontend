@@ -5,14 +5,22 @@
 	height: 100px;
 	align-items: center;
 	justify-content: space-between;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.todoDiv:hover {
+	box-shadow: 0 6px 12px rgba(0,0,0,0.16), 0 6px 12px rgba(0,0,0,0.23);
 }
 .todoDiv > p {
 	text-align: left;
 	font-weight: 500;
+	font-size: 1.2em;
 	cursor: pointer;
+	margin-left: 25px;
+	width: 80%;
 }
 .todoComplete {
 	text-decoration: line-through;
+	font-style: italic;
 }
 .todoDelete {
 	border: 0;
@@ -21,6 +29,7 @@
 	background: red;
 	border-radius: 50%;
 	color: white;
+	margin-right: 25px;
 }
 .todoDelete:hover {
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);

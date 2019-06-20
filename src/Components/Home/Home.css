@@ -31,3 +31,9 @@ section.homeSection {
 	flex-direction: column;
 	width: 40vw;
 }
+
+@media only screen and (max-width: 1000px) {
+	.todo-wrapper {
+		width: 90vw;
+	}
+}
