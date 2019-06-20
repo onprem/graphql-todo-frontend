@@ -3,7 +3,25 @@ import { Mutation } from "react-apollo";
 import { DEL_TODO, TOG_TODO, GET_USER } from '../../gqlDefs';
 import './Todo.css';
 
-const Todo = ( { id, title, isComplete } ) => {
+const Todo = ( { id, title, isComplete, user } ) => {
+	const opResTog = {
+		...user,
+		__typename: "User",
+		todos: user.todos.map((todo) => {
+			if(todo.id === id){
+				return {
+					...todo,
+					isComplete: !isComplete
+				}
+			}
+			return todo
+		})
+	}
+	const opResDel = {
+		...user,
+		__typename: "User",
+		todos: user.todos.filter(todo => todo.id !== id)
+	}
 	return (
 		<Mutation
 			mutation={TOG_TODO}
@@ -16,6 +34,13 @@ const Todo = ( { id, title, isComplete } ) => {
 					}
 				});
 			}}
+			optimisticResponse={{toggleTodo: {
+				__typename: "toggleTodo",
+				code: "200",
+				success: true,
+				message: "todo successfully toggled",
+				user: opResTog
+			}}}
 		>
 			{ toggleTodo => (
 				<Mutation
@@ -29,6 +54,13 @@ const Todo = ( { id, title, isComplete } ) => {
 							}
 						});
 					}}
+					optimisticResponse={{removeTodo: {
+						__typename: "removeTodo",
+						code: "200",
+						success: true,
+						message: "todo successfully removed",
+						user: opResDel
+					}}}
 				>
 					{ removeTodo => (
 						<div className='todoDiv'>

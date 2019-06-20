@@ -19,13 +19,14 @@ const Home = () => {
 					id={todo.id}
 					title={todo.title}
 					isComplete={todo.isComplete}
+					user={data.me}
 				/>
 			)
 			return (
 				<section className='homeSection'>
 					<div className='home-top'>
 						<h2>You are logged in.</h2>
-						<TodoInput />
+						<TodoInput user={data.me} />
 					</div>
 					<div className='home-bottom'>
 						<div className='todo-wrapper'>

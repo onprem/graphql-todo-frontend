@@ -2,8 +2,18 @@ import React, { useState } from 'react';
 import { Mutation } from "react-apollo";
 import { ADD_TODO, GET_USER } from '../../gqlDefs';
 
-const TodoInput = () => {
+const TodoInput = ({ user }) => {
 	const [inputs, changeInputs] = useState({ todo: '' });
+	const opRes = {
+		...user,
+		__typename: "User",
+		todos: user.todos.concat([{
+			id: `${user.id}-9999`,
+			title: inputs.todo,
+			isComplete: false,
+			__typename: "Todo"
+		}])
+	}
 	return (
 		<Mutation
 			mutation={ADD_TODO}
@@ -16,6 +26,13 @@ const TodoInput = () => {
 					}
 				});
 			}}
+			optimisticResponse={{addTodo: {
+				__typename: "addTodo",
+				code: "200",
+				success: true,
+				message: "todo successfully added",
+				user: opRes
+			}}}
 		>
 			{ addTodo => {
 				const handleChange = ( event ) => {
