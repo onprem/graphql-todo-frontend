@@ -45,6 +45,8 @@ const TodoInput = ({ user }) => {
 				}
 				const handleSubmit = ( event ) => {
 					//event.preventDefault();
+					if(!inputs.todo)
+						return;
 					const payload = {
 						todo: inputs.todo
 					}
@@ -63,7 +65,7 @@ const TodoInput = ({ user }) => {
 			      }
 				}
 				return (
-					<input name='todo' type='text' placeholder='Add todo' className='addInput' onChange={handleChange} onKeyDown={onKeyDwn} value={inputs.todo} />
+					<input name='todo' type='text' placeholder='Add todo' className='addInput' onChange={handleChange} onKeyDown={onKeyDwn} value={inputs.todo} required />
 				);
 			}		
 			}

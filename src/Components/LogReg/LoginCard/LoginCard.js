@@ -4,7 +4,7 @@ import { Mutation } from "react-apollo";
 import { USR_LOGIN } from '../../../gqlDefs';
 import './LoginCard.css';
 
-const LoginCard = () => {
+const LoginCard = ({setHaveToken}) => {
 	const [inputs, changeInputs] = useState({ email: '', password: '' });
 	const [errorMsg, setErrorMsg] = useState('');
 	return (
@@ -32,6 +32,7 @@ const LoginCard = () => {
 				if ( data ) {
 					window.localStorage.setItem('token', data.login);
 					console.log('login successful: token: ', data.login);
+					setHaveToken(true);
 					client.resetStore();
 					return (
 						<Redirect to="/" />

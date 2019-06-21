@@ -1,10 +1,13 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import LoginCard from './LoginCard/LoginCard';
 import RegisterCard from './RegisterCard/RegisterCard';
 import './LogReg.css';
 
-const LogReg = () => {
+const LogReg = ({setHaveToken}) => {
+	if(window.localStorage.getItem('token')){
+		return <Redirect to='/' />
+	}
 	return (
 		<section className='loginSection'>
 			<div className='login-left'>
@@ -13,7 +16,7 @@ const LogReg = () => {
 			<div className='login-right'>
 				<Switch>
 					<Route path="/login" exact render={ () => 
-						<LoginCard />}
+						<LoginCard setHaveToken={setHaveToken} />}
 					/>
 					<Route path="/register" exact render={ () => 
 						<RegisterCard />}
