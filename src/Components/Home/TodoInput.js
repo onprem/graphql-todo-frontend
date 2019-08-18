@@ -15,7 +15,7 @@ const TodoInput = ({ user }) => {
 		}])
 	}
 	const [addTodo] = useMutation(ADD_TODO, {
-		update : (cache, { data: { addTodo } }) => {
+		update: (cache, { data: { addTodo } }) => {
 			//const { me } = cache.readQuery({ query: GET_USER });
 			cache.writeQuery({
 				query: GET_USER,
