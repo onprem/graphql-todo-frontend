@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { Mutation } from "react-apollo";
+import { Mutation, useApolloClient } from "react-apollo";
 import { USR_LOGIN } from '../../../gqlDefs';
 import './LoginCard.css';
 
 const LoginCard = ({setHaveToken}) => {
 	const [inputs, changeInputs] = useState({ email: '', password: '' });
 	const [errorMsg, setErrorMsg] = useState('');
+	const client = useApolloClient();
 	return (
 		<Mutation
 			mutation={USR_LOGIN}
 		>
-			{ ( login, { loading, data, error, client }) => {
+			{ ( login, { loading, data, error }) => {
 				const handleInput = ( event ) => {
 					const value = event.target.value;
 					const name = event.target.name;

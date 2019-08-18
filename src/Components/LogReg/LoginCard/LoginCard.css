@@ -49,3 +49,8 @@
 	box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.23);
 	cursor: pointer;
 }
+.loginForm input[type="submit"]:disabled {
+	/*background: #24d0ad;*/
+	background: lightslategrey;
+	cursor: not-allowed;
+}
